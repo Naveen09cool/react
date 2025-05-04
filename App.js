@@ -40,8 +40,68 @@ const HeadingComponent = () => (
   </div>
 )
 
+// STARTING SWIGGY DEMO APP FROM HERE...
+
+const NavHeaderComponent = () => {
+  return (
+    <div className="header">
+      <div className="logo-container">
+        <h1>Logo</h1>
+      </div>
+      <div className="navigation-container">
+        <ul>Home</ul>
+        <ul>About</ul>
+        <ul>Login</ul>
+      </div>
+    </div>
+  )
+}
+
+const RestaurantCard = () => {
+  return (
+    <div className="res-card">
+      <div className="res-image">
+        <img
+          className="res-thumbnail"
+          alt="Image"
+          src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2025/3/13/5a53f484-bb60-4e6c-9a9f-cdfb0e887266_36966.JPG  "></img>
+      </div>
+      <div className="res-info">
+        <p>Food Name</p>
+        <p>price</p>
+        <p>Rating</p>
+      </div>
+    </div>
+  )
+}
+const resList = []
+const BodyComponent = () => {
+  return (
+    <div className="body">
+      <div className="search-container">
+        <h1>Logo</h1>
+      </div>
+      <div className="card-container">
+        {
+          resList.map((restaurent) => (
+            // key={restaurent.data.id} is passed to give unique key for each list item for react. 'key' is reserved word. 
+            <RestaurantCard key={restaurent.data.id} resData={restaurent} />
+          ))}
+      </div>
+    </div>
+  )
+}
+
+const AppComponent = () => {
+  return (
+    <div className="app">
+      <NavHeaderComponent />
+      <BodyComponent></BodyComponent>
+    </div>
+  )
+}
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 // root.render(jsxHeading);//rendering react element
-root.render(<HeadingComponent />)// rendering react component
+root.render(<AppComponent />)// rendering react component
